@@ -16,7 +16,7 @@ export interface IReachOut extends Document {
     host: {_id:string, firstName:string, LastName:string}
 }
 
-const ReachOutSchema = new Schema({
+const ReachoutSchema = new Schema({
     title:{
         type:String, 
         required:true,       
@@ -59,4 +59,4 @@ const ReachOutSchema = new Schema({
     host:{type:Schema.Types.ObjectId, ref: "User"}
 })
 
-export const ReachOut = models.ReachOut || model("ReachOut", ReachOutSchema)
+export const Reachout = models.Reachout || model("ReachOut", ReachoutSchema)

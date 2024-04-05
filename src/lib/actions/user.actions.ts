@@ -3,10 +3,11 @@ import { CreateUserParams, UpdateUserParams} from "../../../types";
 import { handleError } from "../utils";
 import { connectedToDB } from "../database";
 import {User} from "../database/models/user.model";
-import Order from "../database/models/order.model";
-import {ReachOut} from "../database/models/reachOut.model";
-import { revalidatePath }  from "next/cache"
-export const createUser = async (user:CreateUserParams)=> {
+import Order from "../database/models/order.model"
+import { revalidatePath }  from "next/cache";
+import { Reachout } from "../database/models/reachOut.model";
+
+export const createUser = async (user:CreateUserParams) => {
       try{
           await connectedToDB();
           const newUser = await User.create(user);
@@ -57,7 +58,7 @@ export async function deleteUser(clerkId: string) {
     // Unlink relationships
     await Promise.all([
       // Update the 'events' collection to remove references to the user
-      ReachOut.updateMany(
+      Reachout.updateMany(
         { _id: { $in: userToDelete.events } },
         { $pull: { host: userToDelete._id } }
       ),

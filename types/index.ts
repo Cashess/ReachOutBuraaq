@@ -17,11 +17,11 @@ export type UpdateUserParams = {
 
 export type CreatedReachOutParams = {
     userId: string
-    ReachOut:{
+    reachout:{
+        imageUrl: string
         title:string
         description:string
         location: string
-        imageUrl: string
         startDateTime: Date
         endDateTime: Date
         categoryId: string
@@ -34,7 +34,7 @@ export type CreatedReachOutParams = {
     
     export type UpdateReachOutParams = {
       userId: string
-      ReachOut: {
+      reachout: {
         _id: string
         title: string
         imageUrl: string
@@ -51,7 +51,7 @@ export type CreatedReachOutParams = {
     }
     
     export type DeleteReachOutParams = {
-      ReachOutId: string
+      reachoutId: string
       path: string
     }
     
@@ -70,7 +70,7 @@ export type CreatedReachOutParams = {
     
     export type GetRelatedReachOutsByCategoryParams = {
       categoryId: string
-      ReachOutId: string
+      reachoutId: string
       limit?: number
       page: number | string
     }
@@ -104,7 +104,7 @@ export type CreatedReachOutParams = {
     
     // ====== ORDER PARAMS
     export type CheckoutOrderParams = {
-      ReachOutTitle: string
+      reachoutTitle: string
       ReachOutId: string
       price: string
       isFree: boolean
@@ -113,14 +113,14 @@ export type CreatedReachOutParams = {
     
     export type CreateOrderParams = {
       stripeId: string
-      ReachOutId: string
+      reachoutId: string
       buyerId: string
       totalAmount: string
       createdAt: Date
     }
     
     export type GetOrdersByReachOutParams = {
-      ReachOutId: string
+      reachoutId: string
       searchString: string
     }
     

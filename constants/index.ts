@@ -13,3 +13,16 @@ export const headerLinks=[
     },
    
 ]
+
+export const reachOutDefaultValues = {
+    title: "",
+    description:"",
+    location:"",
+    imageUrl:"",
+    startDateTime: new Date(),
+    endDateTime: new Date(),
+    categoryId: "",
+    price:"",
+    isFree:false,
+    url:"",
+}

@@ -9,7 +9,7 @@ const Header= ()=>{
         <header className="w-full border-b">
            <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
-         <Image src="/buraaq Logo.png" alt="solutions" height={129} width={125} className="rounded-full"/>
+         <Image src="/buraaq Logo.png" alt="solutions" height={70} width={100} className="rounded-full"/>
         </Link>
         <SignedIn>
             <nav className=" md:flex-between hidden w-full max-w-xs ">

@@ -2,7 +2,7 @@
 
 import { CreatedReachOutParams } from "../../../types"
 import { connectedToDB } from "../database"
-import { User } from "../database/models/user.model"
+import  User  from "../database/models/user.model"
 import { handleError } from "../utils"
 import { Reachout} from "../database/models/reachOut.model"
 

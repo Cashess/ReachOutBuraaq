@@ -1,7 +1,6 @@
 import styles from "./iproducts.module.css" 
 import Search from '@/components/shared/dashboard/search/search';
 import Link from 'next/link';
-import Pagination from '@/components/shared/dashboard/pagination/pagination';
 import Image from 'next/image';
 
 
@@ -9,7 +8,7 @@ import Image from 'next/image';
 
 
 
-const IProducts = async ({searchParams}) => {
+const IProducts = async () => {
  
   return (
     <div className={styles.container}> 
@@ -65,7 +64,7 @@ const IProducts = async ({searchParams}) => {
         
         </tbody>
       </table>
-      {/* <Pagination count={count} />  */}
+    
       
     </div>
   );

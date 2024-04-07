@@ -2,7 +2,7 @@
 import { CreateUserParams, UpdateUserParams} from "../../../types";
 import { handleError } from "../utils";
 import { connectedToDB } from "../database";
-import {User} from "../database/models/user.model";
+import User from "../database/models/user.model";
 import Order from "../database/models/order.model"
 import { revalidatePath }  from "next/cache";
 import { Reachout } from "../database/models/reachOut.model";
@@ -18,11 +18,11 @@ export const createUser = async (user:CreateUserParams) => {
       }
 }
 
-export async function getUserById(userId: string) {
+export async function getUserById(userId:string) {
   try {
     await connectedToDB()
 
-    const user = await User.findById(userId)
+    const user = await User.findById({userId})
 
     if (!user) throw new Error('User not found')
     return JSON.parse(JSON.stringify(user))
@@ -59,7 +59,7 @@ export async function deleteUser(clerkId: string) {
     await Promise.all([
       // Update the 'events' collection to remove references to the user
       Reachout.updateMany(
-        { _id: { $in: userToDelete.events } },
+        { _id: { $in: userToDelete.reachOuts } },
         { $pull: { host: userToDelete._id } }
       ),
 

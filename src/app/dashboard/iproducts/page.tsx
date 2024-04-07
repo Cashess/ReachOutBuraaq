@@ -1,5 +1,4 @@
-import styles from "./iproducts.module.css" 
-import Search from '@/components/shared/dashboard/search/search';
+import styles from "./iproducts.module.css";
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -13,7 +12,7 @@ const IProducts = async () => {
   return (
     <div className={styles.container}> 
       <div className={styles.top}>
-        <Search placeholder="search for a patient..."/>
+        
         <Link href="/dashboard/iproducts/add">
           <button className={styles.addButton}>Add New</button>
         </Link>

@@ -1,5 +1,6 @@
 import {IReachOut} from "@/lib/database/models/reachOut.model"
 import Card from '@/components/shared/Card'
+import react from "react"
 
 type CollectionsProps ={
     data:IReachOut[],
@@ -23,8 +24,8 @@ const Collections = ({data, emptyTitle,emptyStateSubtext,page, totalPages=0,coll
                 const hasOrderLink = collectionType ==="ReachOut_Hosted";
                 const hidePrice = collectionType === "my_Tickets";
                 return (
-                    <li key={reachout._id} className='flex justify-center'>
-                       <Card reachout={reachout} hasOrderLink={hasOrderLink} hidePriice={hidePrice}/>
+                    <li key={reachout.id} className='flex justify-center'>
+                       <Card reachout={reachout} hasOrderLink={hasOrderLink} hidePrice={hidePrice}/>
                     </li>
                 ) 
                })}

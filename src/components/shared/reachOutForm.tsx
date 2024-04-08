@@ -26,11 +26,11 @@ type ReachOutFormProps = {
     userId: string
     type: "Create" | "Update"
     reachout?: IReachOut
-    
+    reachoutId?: string
 
 }
 
-const ReachOutForm = ({userId, type,reachout,}: ReachOutFormProps) => {
+const ReachOutForm = ({userId, type,reachout, reachoutId}: ReachOutFormProps) => {
   const [ files, setFiles] = useState<File[]>([])   
   const {startUpload} = useUploadThing("imageUploader")
   const router= useRouter();

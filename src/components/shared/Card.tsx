@@ -8,7 +8,7 @@ import DeleteComfirmationCard from '@/components/shared/DeleteComfirmationCard'
 type CardProps = {
     reachout: IReachOut,
     hasOrderLink?:boolean,
-    hidePrice?:boolean
+    hidePrice?:boolean,
 }
 const Card =({reachout, hasOrderLink, hidePrice}:CardProps)=> {
     const {sessionClaims } = auth();
@@ -24,7 +24,7 @@ const Card =({reachout, hasOrderLink, hidePrice}:CardProps)=> {
                 <Link href={`/reachOut/${reachout._id}/update`}>
                     <Image src="/icons/edit.svg" alt="edit" width={25} height={25}/>
                 </Link>
-                <DeleteComfirmationCard reachoutId={reachout._id}/>
+                <DeleteComfirmationCard reachoutId={"reachoutId"} />
             </div>
          )}
          <Link href={`/reachOut/${reachout._id}`} className='flex min-h-[230px] flex-col gap-3 p-5 md:gap-4'>

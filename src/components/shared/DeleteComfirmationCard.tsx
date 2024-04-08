@@ -18,7 +18,7 @@ const DeleteComfirmationCard= ({ reachoutId }: { reachoutId: string }) => {
                 <Image src="/icons/delete.svg" alt="edit" width={20} height={20} />
               </AlertDialogTrigger>
         
-              <AlertDialogContent className="bg-white">
+              <AlertDialogContent className="bg-white text-black">
                 <AlertDialogHeader>
                   <AlertDialogTitle>Are you sure you want to delete?</AlertDialogTitle>
                   <AlertDialogDescription className="p-regular-16 text-grey-600">

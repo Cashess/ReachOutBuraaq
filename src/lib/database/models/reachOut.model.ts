@@ -1,6 +1,7 @@
 import { Schema, model,models,Document } from "mongoose";
 
 export interface IReachOut extends Document {
+    startDateTime(startDateTime: any): unknown;
     _id: String,
     title: string;
     description?: string;
@@ -13,7 +14,7 @@ export interface IReachOut extends Document {
     isFree: boolean;
     url?: string;
     category: {_id:string, name:string};
-    host: {_id:string, firstName:string, LastName:string}
+    host: {_id:string, firstName:string, lastName:string}
 }
 
 const ReachoutSchema = new Schema({
@@ -59,4 +60,4 @@ const ReachoutSchema = new Schema({
     host:{type:Schema.Types.ObjectId, ref: "User"}
 })
 
-export const Reachout = models.Reachout || model("ReachOut", ReachoutSchema)
+export const Reachout = models.Reachout || model("Reachout", ReachoutSchema)

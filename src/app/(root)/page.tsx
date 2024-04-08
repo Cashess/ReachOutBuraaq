@@ -1,9 +1,18 @@
 import { Button } from '@/components/ui/button'
+import Collections from '@/components/shared/Collections'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React from 'react';
+import { getAllReachOuts } from "@/lib/actions/reachOut.actions"
 
-export default function Home() {
+export default async function Home() {
+  const reachOuts = await getAllReachOuts({
+    query: "",
+    category: "",
+    page: 1,
+    limit: 6
+  })
+
   return (
     <>
     <section className='bg-primary-100 bg-dotted bg-pattern bg-contain py-5 md:py-10 overflow-hidden'>
@@ -32,6 +41,15 @@ export default function Home() {
       Search
       Category
       </div>
+      <Collections 
+      data={reachOuts?.data}
+      emptyTitle="No ReachOuts Found"
+      emptyStateSubtext="Come back again later"
+      collectionType="All_ReachOuts"
+      limit={6}
+      page={1}
+      totalPages={2} 
+      />
     </section>
     </>
   );

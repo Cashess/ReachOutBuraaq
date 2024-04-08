@@ -9,8 +9,9 @@ type CardProps = {
     reachout: IReachOut,
     hasOrderLink?:boolean,
     hidePrice?:boolean,
+    reachoutId?: string
 }
-const Card =({reachout, hasOrderLink, hidePrice}:CardProps)=> {
+const Card =({reachout, hasOrderLink, hidePrice,reachoutId}:CardProps)=> {
     const {sessionClaims } = auth();
     const userId = sessionClaims?.userId as string;
     const isReachOutCreator = userId === reachout.host._id.toString();
@@ -24,7 +25,7 @@ const Card =({reachout, hasOrderLink, hidePrice}:CardProps)=> {
                 <Link href={`/reachOut/${reachout._id}/update`}>
                     <Image src="/icons/edit.svg" alt="edit" width={25} height={25}/>
                 </Link>
-                <DeleteComfirmationCard reachoutId={"reachoutId"} />
+                <DeleteComfirmationCard reachoutId={reachout._id.toString()} />
             </div>
          )}
          <Link href={`/reachOut/${reachout._id}`} className='flex min-h-[230px] flex-col gap-3 p-5 md:gap-4'>
@@ -37,7 +38,7 @@ const Card =({reachout, hasOrderLink, hidePrice}:CardProps)=> {
             </p>
           </div>}
           <p className='p-medium-16 p-medium-18 text-black'>
-          {formatDateTime(reachout.startDateTime).dateTime}
+               {formatDateTime(reachout.startDateTime).dateTime}
           </p>
           <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">
             {reachout.title}

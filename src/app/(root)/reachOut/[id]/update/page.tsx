@@ -22,7 +22,7 @@ const UpdateReachOut = async ({ params :{id}}:UpdateReachOutProps) => {
 
    </section>
    <div className="wrapper my-7">
-   <ReachOutForm userId={userId} type="Update" reachout={reachOut} reachoutId={reachOut._id}/>
+   <ReachOutForm userId={userId} type="Update" reachout={reachOut} />
    </div>
   </>
   )

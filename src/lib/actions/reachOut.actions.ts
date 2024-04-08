@@ -17,23 +17,30 @@ const populateReachOut = (query: any) => {
     .populate({ path: 'host', model: User, select: '_id firstName lastName' })
     .populate({ path: 'category', model: Category, select: '_id name' })
 }
-export const createReachOut =  async ({reachout, userId, path}:CreatedReachOutParams) => {
-      try{
-          await connectedToDB();
+export const createReachOut = async ({ reachout, userId, path }: CreatedReachOutParams) => {
+  try {
+    await connectedToDB();
 
-          const host = await User.findById(userId);
-          if(!host) {
-            throw new Error("Host not found")
-          }
-          const newReachOut = await Reachout.create({
-               ...reachout, category:reachout.categoryId, host:userId
-          })
+    const host = await User.findById(userId);
+    if (!host) {
+      throw new Error("Host not found");
+    }
+    const newReachOut = await Reachout.create({
+      ...reachout,
+      category: reachout.categoryId,
+      host: userId,
+    });
 
-          return JSON.parse(JSON.stringify(newReachOut));
-      } catch (error) {
-        handleError(error)
-      }
-}
+    // Move revalidatePath inside the try block
+    revalidatePath(path);
+
+    return JSON.parse(JSON.stringify(newReachOut));
+  } catch (error) {
+    
+    handleError(error);
+  }
+};
+
 
 
 // CREATE

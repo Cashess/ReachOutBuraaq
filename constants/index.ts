@@ -8,6 +8,10 @@ export const headerLinks=[
         route:"/reachOut/create"
     },
     {
+        label:"Org-Dash",
+        route:"/dashboard"
+    },
+    {
         label:"My Profile",
         route:"/profile"
     },

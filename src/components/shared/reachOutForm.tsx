@@ -27,7 +27,6 @@ type ReachOutFormProps = {
     type: "Create" | "Update"
     reachout?: IReachOut
     reachoutId?: string
-
 }
 
 const ReachOutForm = ({userId, type,reachout,reachoutId}: ReachOutFormProps) => {

@@ -33,7 +33,7 @@ const Card =({reachout, hasOrderLink, hidePrice,reachoutId}:CardProps)=> {
             <span className='p-semibold-14 w-min rounded-3xl bg-green-200 px-4 py-0 '>
                 {reachout.isFree ? "FREE" : `$${reachout.price}`}
             </span >
-            <p className='p-semibold-16 w-min rounded-full bg-grey-600/10 px-4 py-1  '>
+            <p className='p-semibold-16 w-min rounded-full bg-grey-600/10 px-4 py-1 text-black line-clamp-1'>
                 {reachout.category.name}
             </p>
           </div>}

@@ -18,7 +18,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import { Checkbox } from '../ui/checkbox';
 import { useUploadThing } from "@/lib/uploadthing"
 import { useRouter } from 'next/navigation';
-import { createReachOut } from '@/lib/actions/reachOut.actions';
+import { createReachOut,updateReachOut} from '@/lib/actions/reachOut.actions';
 import { IReachOut } from '@/lib/database/models/reachOut.model';
 
 
@@ -26,16 +26,20 @@ type ReachOutFormProps = {
     userId: string
     type: "Create" | "Update"
     reachout?: IReachOut
-    
+    reachoutId?: string
 
 }
 
-const ReachOutForm = ({userId, type,reachout}: ReachOutFormProps) => {
+const ReachOutForm = ({userId, type,reachout,reachoutId}: ReachOutFormProps) => {
   const [ files, setFiles] = useState<File[]>([])   
   const {startUpload} = useUploadThing("imageUploader")
-  const router= useRouter();
-   const initialValues = reachOutDefaultValues;
-
+  const initialValues = reachout && type === "Update"? {
+    ...reachout,
+    startDateTime: new Date(reachout.startDateTime),
+    endDateTime: new Date(reachout.endDateTime)
+   } : reachOutDefaultValues;
+   
+   const router= useRouter();
     const form = useForm<z.infer<typeof reachOutFormSchema>>({
       resolver: zodResolver(reachOutFormSchema),
       defaultValues: initialValues,
@@ -69,6 +73,30 @@ const ReachOutForm = ({userId, type,reachout}: ReachOutFormProps) => {
              if(newReachOut) {
               form.reset();
               router.push(`/reachOut/${newReachOut._id}`)
+             }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      if(type === "Update") {
+        if(!reachoutId) {
+          router.back()
+          return;
+        }
+        try{
+         
+             const updatedReachOut = await updateReachOut({
+               userId,
+              reachout: {
+                ...values, imageUrl: uploadedImageUrl, _id:reachoutId
+             
+              },
+              path: `/reachOut/${reachoutId}`
+             })
+
+             if(updatedReachOut) {
+              form.reset();
+              router.push(`/reachOut/${updatedReachOut._id}`)
              }
         } catch (error) {
           console.log(error);

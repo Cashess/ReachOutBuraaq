@@ -1,16 +1,15 @@
 import { Schema, model,models,Document } from "mongoose";
 
 export interface IReachOut extends Document {
-    startDateTime(startDateTime: any): unknown;
     _id: String,
     title: string;
     description?: string;
     location?: string;
     createdAt: Date;
     imageUrl: string;
-    startDate: Date;
+    startDateTime: Date;
     endDateTime: Date;
-    price?: string;
+    price: string;
     isFree: boolean;
     url?: string;
     category: {_id:string, name:string};

@@ -38,7 +38,7 @@ const Card =({reachout, hasOrderLink, hidePrice,reachoutId}:CardProps)=> {
             </p>
           </div>}
           <p className='p-medium-16 p-medium-18 text-black'>
-          {formatDateTime(reachout.endDateTime).dateTime}
+          {formatDateTime(reachout.startDateTime).dateTime}
           </p>
           <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">
             {reachout.title}

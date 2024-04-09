@@ -30,8 +30,7 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-        required: true,
-        unique: true  // Ensures password is unique
+         default: " ",
     }
 });
 
